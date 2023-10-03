@@ -1,0 +1,49 @@
+Langkah pertama dalam normalisasi adalah membawa tabel ke dalam bentuk 1st Normal Form (1NF). Untuk mencapai 1NF, kita perlu memastikan bahwa setiap sel dalam tabel hanya berisi satu nilai dan tidak ada duplikasi baris. Dalam tabel "Belanja Online" yang diberikan, tidak ada duplikasi baris, tetapi kita perlu memisahkan nilai-nilai yang terduplikasi ke dalam tabel terpisah jika ada. Kita juga perlu menentukan kunci utama dari tabel ini. Kunci utama dapat menjadi kombinasi dari beberapa kolom yang unik, seperti "Orders ID" dan "Product ID."
+Tabel "Belanja Online" dalam 1NF:
+Orders ID	Customer Name	Customer Address	Product ID	    Product Name	Category	    Price
+1001	    John Smith	    123 Main St	        P001	        T-shirts	    Clothing	    20.99
+1002	    Mary Johnson	456 Elm St	        P002	        Smartphone	    Electronics	    499.99
+1003	    John Smith	    123 Main St	        P003	        Headphone	    Electronics	    49.99
+1004	    Sarah Brown     789 Oak Ave	        P004	        Book	        Books	        12.49
+1005	    Mary Johnson	456 Elm St	        P005	        Camera	        Electronics	    299.39
+
+
+Selanjutnya, kita akan mencapai 2nd Normal Form (2NF). Untuk mencapai 2NF, kita perlu memastikan bahwa setiap kolom yang bukan merupakan kunci utama secara lengkap tergantung pada kunci utama tabel. Kita akan membagi tabel ini menjadi tiga tabel: "Orders," "Customers," dan "Products."
+Tabel "Orders" dalam 2NF:
+Orders ID	Customer ID	Product ID	Price
+1001	    1	        P001	20.99
+1002	    2	        P002	499.99
+1003	    1	        P003	49.99
+1004	    3	        P004	12.49
+1005	    2	        P005	299.39
+
+
+Tabel "Customers" dalam 2NF:
+Customer ID	Customer Name	Customer Address
+1	        John Smith	    123 Main St
+2	        Mary Johnson	456 Elm St
+3	        Sarah Brown	    789 Oak Ave
+
+
+Tabel "Products" dalam 2NF:
+Product ID	Product Name	Category
+P001	    T-shirts	    Clothing
+P002	    Smartphone	    Electronics
+P003	    Headphone	    Electronics
+P004	    Book	        Books
+P005	    Camera	        Electronics
+
+
+Terakhir, kita akan mencapai 3rd Normal Form (3NF). Untuk mencapai 3NF, kita perlu memastikan bahwa setiap kolom yang bukan merupakan kunci utama tidak memiliki dependensi transitif pada kunci utama. Dalam tabel "Orders," kolom "Customer Address" tergantung pada "Customer ID," yang bukan merupakan kunci utama. Oleh karena itu, kita akan membagi tabel "Customers" menjadi dua tabel: "Customers" dan "Addresses."
+Tabel "Customers" dalam 3NF:
+Customer ID	Customer Name
+1	        John Smith
+2	        Mary Johnson
+3	        Sarah Brown
+
+
+Tabel "Addresses" dalam 3NF:
+Customer ID	Customer Address
+1	        123 Main St
+2	        456 Elm St
+3	        789 Oak Ave

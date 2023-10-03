@@ -1,0 +1,42 @@
+Langkah pertama dalam normalisasi adalah membawa tabel ke dalam bentuk 1st Normal Form (1NF). Untuk mencapai 1NF, kita perlu memastikan bahwa setiap sel dalam tabel hanya berisi satu nilai dan tidak ada duplikasi baris. Dalam tabel "Manajemen Karyawan" yang dibawah, tidak ada duplikasi baris, tetapi kita perlu memisahkan nilai-nilai yang terduplikasi ke dalam tabel terpisah jika ada.
+Tabel "Manajemen Karyawan" dalam 1NF:
+Employee-ID	Name	Department	Supervisor-ID	Supervisor-Name	Salary
+101	        John	HR	        201	            Mary	        50000
+102	        Jane	Finance	    202	            Sarah	        55000
+201	        Mary	HR	        203	            David	        60000
+202	        Sarah	Finance	    203	            David	        65000
+203	        David	CEO	        NULL	        NULL	        100000
+
+Untuk mencapai 2NF, kita perlu memastikan bahwa setiap kolom yang bukan merupakan kunci utama secara lengkap tergantung pada kunci utama tabel. Dalam kasus ini, kunci utama bisa menjadi kolom "Employee ID." Kolom "Supervisor Name" tergantung pada "Supervisor ID," yang sebenarnya adalah kunci utama. Oleh karena itu, kita akan membagi tabel ini menjadi dua tabel: "Employees" dan "Salary."
+Tabel "Employees" dalam 2NF:
+Employee-ID	Name	Department	Supervisor-ID
+101	        John	HR	        201
+102	        Jane	Finance	    202
+201	        Mary	HR	        203
+202	        Sarah	Finance	    203
+203	        David	CEO	        NULL
+
+
+Tabel "Salary" dalam 2NF:
+Employee-ID	Salary
+101	        50000
+102	        55000
+201	        60000
+202	        65000
+203	        100000
+
+Untuk mencapai 3NF, kita perlu memastikan bahwa setiap kolom yang bukan merupakan kunci utama tidak memiliki dependensi transitif pada kunci utama. Dalam tabel "Employees," kolom "Supervisor Name" tergantung pada "Supervisor ID," yang sebenarnya adalah kunci utama. Oleh karena itu, kita akan membagi tabel "Employees" menjadi dua tabel: "Employees" dan "Supervisors."
+Tabel "Employees" dalam 3NF:
+Employee-ID	Name	Department	Supervisor-ID
+101	        John	HR	        201
+102	        Jane	Finance	    202
+201	        Mary	HR	        203
+202	        Sarah	Finance	    203
+203	        David	CEO	        NULL
+
+
+Tabel "Supervisors" dalam 3NF:
+Supervisor-ID	Supervisor-Name
+201	            Mary
+202	            Sarah
+203	            David

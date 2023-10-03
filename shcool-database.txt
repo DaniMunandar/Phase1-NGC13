@@ -1,0 +1,62 @@
+Langkah pertama dalam normalisasi adalah membawa tabel ke dalam bentuk 1st Normal Form (1NF). Untuk mencapai 1NF, kita perlu memastikan bahwa setiap sel dalam tabel hanya berisi satu nilai dan tidak ada duplikasi baris. Dalam tabel "Informasi Siswa" yang diberikan, tidak ada duplikasi baris, tetapi kita perlu memisahkan nilai-nilai yang terduplikasi ke dalam tabel terpisah jika ada. Untuk itu, kita akan memisahkan tabel menjadi tiga tabel: "Student," "Course," dan "Instructor."
+1NF
+Tabel "Student":
+Student ID	Student Name
+101	        John
+102	        Jane
+103	        Mary
+104	        Sarah
+105	        David
+
+Tabel "Course":
+Course
+HTML
+CSS
+Basic Go
+Handling Error
+REST API
+
+Tabel "Instructor":
+Course Instructor
+Mrs. Ayu
+Mrs. Amel
+Mr. Aldi
+Mr. Safran
+Mr. Tugas
+
+
+Selanjutnya, kita akan mencapai 2nd Normal Form (2NF). Untuk mencapai 2NF, kita perlu memastikan bahwa setiap kolom yang bukan merupakan kunci utama secara lengkap tergantung pada kunci utama tabel. Dalam kasus ini, kolom "Course Instructor" tidak tergantung pada "Student ID" atau "Course." Oleh karena itu, kita akan membagi tabel "Course" menjadi dua tabel: "Course" dan "Instructor."
+2NF
+Tabel "Course":
+Course
+HTML
+CSS
+Basic Go
+Handling Error
+REST API
+
+Tabel "Instructor":
+Course	                Course Instructor
+HTML	                Mrs. Ayu
+CSS	                    Mrs. Amel
+Basic Go	            Mr. Aldi
+Handling Error	        Mr. Safran
+REST API	            Mr. Tugas
+
+Terakhir, kita akan mencapai 3rd Normal Form (3NF). Untuk mencapai 3NF, kita perlu memastikan bahwa setiap kolom yang bukan merupakan kunci utama tidak memiliki dependensi transitif pada kunci utama. Dalam tabel "Instructor," kolom "Course Instructor" tergantung pada "Course," yang bukan merupakan kunci utama. Oleh karena itu, kita akan membagi tabel "Instructor" menjadi dua tabel: "Course Instructor" dan "Course."
+3NF
+Tabel "Course Instructor":
+Course Instructor
+Mrs. Ayu
+Mrs. Amel
+Mr. Aldi
+Mr. Safran
+Mr. Tugas
+
+Tabel "Course":
+Course	                Course Instructor
+HTML	                Mrs. Ayu
+CSS	                    Mrs. Amel
+Basic Go	            Mr. Aldi
+Handling Error	        Mr. Safran
+REST API	            Mr. Tugas
